@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ArrowLeft, ArrowRight, Check, Sparkles, Target, User, Utensils, type LucideIcon } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
@@ -57,6 +57,19 @@ export function PlanForm({ loading, onSubmit }: Props) {
   const [likes, setLikes] = useState("");
   const [errors, setErrors] = useState<Partial<Record<NumField, string>>>({});
 
+  const formRef = useRef<HTMLFormElement>(null);
+  const firstRender = useRef(true);
+
+  // Алхам солигдоход form-ын эхлэл рүү гүйлгэнэ (утсан дээр алхмын заагч харагдахгүй үлдэхгүй).
+  useEffect(() => {
+    if (firstRender.current) {
+      firstRender.current = false;
+      return;
+    }
+    const el = formRef.current;
+    if (el && el.getBoundingClientRect().top < 0) el.scrollIntoView({ behavior: "smooth", block: "start" });
+  }, [step]);
+
   const isLast = step === STEPS.length - 1;
   const progress = ((step + 1) / STEPS.length) * 100;
 
@@ -94,7 +107,7 @@ export function PlanForm({ loading, onSubmit }: Props) {
 
   return (
     <Card className="p-0 print:hidden">
-      <form onSubmit={handleSubmit} noValidate>
+      <form ref={formRef} onSubmit={handleSubmit} noValidate className="scroll-mt-20">
         {/* Алхмын заагч */}
         <div className="space-y-4 border-b border-border p-5 sm:p-6">
           <div className="h-1.5 w-full overflow-hidden rounded-full bg-primary/10">

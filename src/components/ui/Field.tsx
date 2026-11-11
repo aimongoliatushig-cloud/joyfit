@@ -81,9 +81,9 @@ export function ChoiceCards<T extends string>({
   onChange: (v: T) => void;
   columns?: 2 | 3 | 4;
 }) {
-  const grid = { 2: "sm:grid-cols-2", 3: "sm:grid-cols-3", 4: "sm:grid-cols-2 lg:grid-cols-4" }[columns];
+  const grid = { 2: "grid-cols-1 sm:grid-cols-2", 3: "grid-cols-1 sm:grid-cols-3", 4: "grid-cols-2 lg:grid-cols-4" }[columns];
   return (
-    <div role="radiogroup" aria-label={name} className={`grid grid-cols-1 gap-2 ${grid}`}>
+    <div role="radiogroup" aria-label={name} className={`grid gap-2 ${grid}`}>
       {options.map((o) => {
         const active = o.value === value;
         return (
