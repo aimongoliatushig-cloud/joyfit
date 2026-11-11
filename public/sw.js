@@ -3,7 +3,7 @@
  * - /_next/static, icon, фонт: cache-first (файлын нэр нь hash-тай тул аюулгүй).
  * - /api/*: хэзээ ч cache хийхгүй (AI хариу, тохиргоо).
  */
-const VERSION = "joyfit-v1";
+const VERSION = "joyfit-v2";
 const SHELL = ["/", "/settings", "/offline.html", "/icon-192.png", "/icon-512.png", "/manifest.webmanifest"];
 
 self.addEventListener("install", (event) => {
@@ -34,8 +34,10 @@ self.addEventListener("fetch", (event) => {
     event.respondWith(
       fetch(req)
         .then((res) => {
-          const copy = res.clone();
-          caches.open(VERSION).then((c) => c.put(req, copy));
+          if (res.ok) {
+            const copy = res.clone();
+            caches.open(VERSION).then((c) => c.put(req, copy));
+          }
           return res;
         })
         .catch(async () => (await caches.match(req)) || (await caches.match("/offline.html"))),
