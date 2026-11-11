@@ -85,6 +85,11 @@ export function calculateTargets(p: Profile): Targets {
   };
 }
 
+/** Тоог мянгатын тусгаарлагчтай харуулна (kcal, грамм). Мөнгө биш. */
+export function formatNumber(n: number): string {
+  return Math.round(n).toLocaleString("mn-MN");
+}
+
 export function bmiLabel(bmi: number): string {
   if (bmi < 18.5) return "Жин дутуу";
   if (bmi < 25) return "Хэвийн";

@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
+import { LoaderCircle, Sparkles } from "lucide-react";
 import { PlanForm } from "@/components/PlanForm";
 import { PlanResult } from "@/components/PlanResult";
 import type { Profile } from "@/lib/nutrition";
@@ -35,7 +36,11 @@ export default function HomePage() {
   return (
     <div className="space-y-8">
       <div className="print:hidden">
-        <h1 className="text-3xl font-extrabold tracking-tight sm:text-4xl">Хувийн хооллолтын төлөвлөгөө</h1>
+        <span className="inline-flex items-center gap-1.5 rounded-full bg-primary/10 px-3 py-1 text-sm font-semibold text-primary">
+          <Sparkles className="h-4 w-4" aria-hidden />
+          AI хоол зүйч
+        </span>
+        <h1 className="mt-3 text-3xl font-extrabold tracking-tight sm:text-4xl">Хувийн хооллолтын төлөвлөгөө</h1>
         <p className="mt-2 max-w-2xl text-lg text-muted">
           Мэдээллээ оруулаад товч дарахад таны илчлэгийн хэрэгцээг тооцоолж, AI өдөр бүрийн цэс, худалдан авах
           жагсаалт гаргана.
@@ -46,7 +51,7 @@ export default function HomePage() {
 
       {loading && (
         <div className="flex items-center gap-3 rounded-xl border border-border bg-surface p-4 print:hidden" aria-live="polite">
-          <span className="h-5 w-5 animate-spin rounded-full border-2 border-primary border-t-transparent" />
+          <LoaderCircle className="h-5 w-5 shrink-0 animate-spin text-primary" aria-hidden />
           <span>AI цэс бэлдэж байна. 30 секундээс 2 минут орчим хүлээнэ үү…</span>
         </div>
       )}

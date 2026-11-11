@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
+import { KeyRound, LogOut, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { Input } from "@/components/ui/Input";
@@ -94,7 +95,7 @@ function SetupAdmin({ onDone }: { onDone: () => void }) {
 
   return (
     <Card>
-      <h2 className="text-lg font-extrabold">1. Админ нууц үг үүсгэх</h2>
+      <h2 className="flex items-center gap-2 text-lg font-extrabold"><ShieldCheck className="h-5 w-5 text-primary" aria-hidden />Админ нууц үг үүсгэх</h2>
       <p className="mt-1 text-sm text-muted">
         Анх удаа нээж байна. Тохиргоог зөвхөн та өөрчлөх боломжтой байхын тулд нууц үг үүсгэнэ үү. Мартвал{" "}
         <code className="rounded bg-surface2 px-1">data/settings.json</code> файлыг устгаад шинээр үүсгэнэ.
@@ -131,7 +132,7 @@ function Login({ onDone }: { onDone: () => void }) {
 
   return (
     <Card>
-      <h2 className="text-lg font-extrabold">Админаар нэвтрэх</h2>
+      <h2 className="flex items-center gap-2 text-lg font-extrabold"><ShieldCheck className="h-5 w-5 text-primary" aria-hidden />Админаар нэвтрэх</h2>
       <form onSubmit={submit} className="mt-4 space-y-4">
         <Field label="Нууц үг" htmlFor="login-pw">
           <Input id="login-pw" type="password" autoComplete="current-password" value={pw} onChange={(e) => setPw(e.target.value)} />
@@ -195,12 +196,13 @@ function AiSettings({ status, onChange }: { status: Status; onChange: () => void
       <Card>
         <div className="flex items-start justify-between gap-3">
           <div>
-            <h2 className="text-lg font-extrabold">Claude API key</h2>
+            <h2 className="flex items-center gap-2 text-lg font-extrabold"><KeyRound className="h-5 w-5 text-primary" aria-hidden />Claude API key</h2>
             <p className={`mt-1 text-sm ${status.keySource === "none" ? "text-amber-700 dark:text-amber-300" : "text-muted"}`}>
               {sourceText}
             </p>
           </div>
           <Button variant="ghost" size="sm" onClick={logout}>
+            <LogOut className="mr-1.5 inline h-4 w-4 align-[-2px]" aria-hidden />
             Гарах
           </Button>
         </div>

@@ -36,7 +36,16 @@
     @apply antialiased;
   }
 
+  /* Хэвлэхэд харанхуй горимоос үл хамааран цагаан цаасан дээр гаргана */
   @media print {
-    body { background: #fff; color: #000; }
+    :root,
+    .dark {
+      --bg: #ffffff;
+      --surface: #ffffff;
+      --surface2: #f1f5f9;
+      --text: #0f172a;
+      --muted: #475569;
+      --border: #cbd5e1;
+    }
   }
 }
