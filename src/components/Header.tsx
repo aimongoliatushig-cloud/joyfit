@@ -16,10 +16,10 @@ export function Header() {
   const pathname = usePathname();
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border bg-surface/90 backdrop-blur print:hidden">
+    <header className="sticky top-0 z-50 border-b border-border bg-surface/90 pt-[env(safe-area-inset-top)] backdrop-blur print:hidden">
       <nav className="mx-auto flex max-w-5xl items-center justify-between gap-3 px-4 py-3 sm:px-6">
         <Link href="/" className="flex items-center gap-2.5 rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">
-          <Image src="/logo.png" alt="" width={36} height={36} className="rounded-xl" />
+          <Image src="/icon-64.png" alt="" width={36} height={36} className="rounded-xl bg-white" priority />
           <span className="text-lg font-extrabold tracking-wider text-primary">JOYFIT</span>
         </Link>
 

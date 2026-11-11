@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="mn">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#16a34a" />
+    <title>Joyfit — Интернэт алга</title>
+    <!-- Апп-ын CSS-ийг ачаалж чадахгүй үед харагдах тул globals.css-ийн token-уудыг энд давтав. -->
+    <style>
+      :root {
+        color-scheme: light dark;
+        --bg: #ffffff;
+        --text: #0f172a;
+        --muted: #64748b;
+        --primary: #16a34a;
+        --on-primary: #ffffff;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root { --bg: #0b1220; --text: #e5e7eb; --muted: #94a3b8; --primary: #22c55e; --on-primary: #0b1220; }
+      }
+      body { margin: 0; min-height: 100vh; display: grid; place-items: center; font-family: system-ui, "Segoe UI", Arial, sans-serif; background: var(--bg); color: var(--text); padding: 16px; box-sizing: border-box; }
+      main { max-width: 360px; text-align: center; }
+      img { width: 72px; height: 72px; border-radius: 16px; }
+      h1 { font-size: 22px; margin: 16px 0 8px; }
+      p { color: var(--muted); line-height: 1.5; margin: 0 0 20px; }
+      button { background: var(--primary); color: var(--on-primary); border: 0; border-radius: 12px; padding: 12px 20px; font-size: 16px; font-weight: 700; cursor: pointer; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <img src="/icon-192.png" alt="" />
+      <h1>Интернэт холболт алга</h1>
+      <p>Joyfit сервертэй холбогдож чадсангүй. Компьютер дээр апп асаалттай (npm start) байгаа эсэх, интернэт холболтоо шалгаад дахин оролдоно уу.</p>
+      <button onclick="location.reload()">Дахин оролдох</button>
+    </main>
+  </body>
+</html>
