@@ -30,8 +30,13 @@
   }
 
   body {
+    font-family: "Nunito", system-ui, "Segoe UI", Arial, sans-serif;
     background-color: var(--bg);
     color: var(--text);
     @apply antialiased;
+  }
+
+  @media print {
+    body { background: #fff; color: #000; }
   }
 }
